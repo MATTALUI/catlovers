@@ -1,0 +1,5 @@
+<%=form_with(model:[@cat,@cat.comments.build], local: true) do |comment_form|%>
+  <%=comment_form.text_field :commenter, placeholder: "Your name"%><br/>
+  <%=comment_form.text_area :body, placeholder: "What do you think of this cat..?"%><br/>
+  <%=comment_form.submit "Add comment"%>
+<%end%>

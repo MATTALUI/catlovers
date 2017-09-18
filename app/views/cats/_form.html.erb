@@ -1,0 +1,33 @@
+
+<%= form_with model: @cat do |cat_form| %>
+
+  <% if @cat.errors.any? %>
+   <div id="error_explanation">
+     <h2>
+       <%= pluralize(@article.errors.count, "error") %> prohibited
+       this article from being saved:
+     </h2>
+     <ul>
+       <% @cat.errors.full_messages.each do |msg| %>
+         <li><%= msg %></li>
+       <% end %>
+     </ul>
+   </div>
+  <% end %>
+
+  <%= cat_form.label :name%><br/>
+  <%= cat_form.text_field :name, placeholder: "Cat's Name"%><br/>
+
+  <%= cat_form.label :description%><br/>
+  <%= cat_form.text_area :description, placeholder: "brief description of cat"%><br/>
+
+  <%= cat_form.label :age%><br/>
+  <%= cat_form.number_field :age, placeholder: "Cat's Age" %><br/>
+
+  <%= cat_form.label :image_url%><br/>
+  <%= cat_form.text_field :image_url, placeholder: "Url to picture of cat!"%><br/>
+
+  <br/>
+  <%= cat_form.check_box :shots?%><label>Has Shots?</label><br/>
+  <%= cat_form.submit%>
+<% end %>

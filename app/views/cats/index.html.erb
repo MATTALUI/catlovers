@@ -1,0 +1,22 @@
+<h1>Admire all of our cats!</h1>
+<p>Want to add you cat? Click <%=link_to 'here', new_cat_path %>!</p>
+<table>
+  <tr>
+    <td>Name</td>
+    <td>Description</td>
+    <td>Age</td>
+    <td>Photo</td>
+    <td>Do they Have all of their shots?</td>
+  </tr>
+  <% @cats.each do |cat|%>
+    <tr>
+      <td><%=cat.name%></td>
+      <td><%=cat.description%></td>
+      <td><%=cat.age%></td>
+      <td><img src="<%=cat.image_url%>"/></td>
+      <td><%=cat.shots%></td>
+      <td><%=link_to 'View Cat', cat_path(cat.id), :method=> :get%></td>
+      <td><%=link_to 'Edit Info', edit_cat_path(cat.id)%></td>
+    <tr>
+  <%end%>
+</table>
