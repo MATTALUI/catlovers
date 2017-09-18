@@ -1,3 +1,4 @@
-<div>
-  <p><%= comment.body%><span><strong>-<%=comment.commenter%></strong></span></p>
+<div style="border: 1px solid black;">
+  <p class="comment"><%= comment.body%><span><strong>-<%=comment.commenter%></strong></span></p>
+  <p class ="comment"><%=link_to 'Remove Comment', [comment.cat, comment], method: :delete, data: {confirm: 'Delete?'}%></p>
 </div>

@@ -1,4 +1,5 @@
 class CatsController < ApplicationController
+  http_basic_authenticate_with name: "matt", password: "password1", except: [:index, :show]
   def index
     @cats = Cat.all
   end
@@ -23,12 +24,6 @@ class CatsController < ApplicationController
     params[:cat][:age] = params[:cat][:age].to_i
     params[:cat][:shots] = (params[:cat][:shots]==="1")
     params[:cat][:image_url] = 'https://cdn3.iconfinder.com/data/icons/avatars-9/145/Avatar_Cat-512.png' if params[:cat][:image_url]===""
-
-    # render plain: params[:cat].inspect
-    # copy = Hash.new(params[:cat])
-    # @cat = Cat.new(copy)
-    # logger.info @cat['cat'].inspect
-
     @cat = Cat.new(cat_params)
     if @cat.save
       redirect_to @cat
